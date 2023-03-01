@@ -61,7 +61,7 @@ export default function SeriesInfo() {
                         isReady() ?
                             series.map(ser => (
                                 <SeriesInfoCard key={ser.id} series={ser} />
-                                //< ScorecardSkeleton key = { match.id } id={match.id} />
+                                
                             )) :
                             <></>
 

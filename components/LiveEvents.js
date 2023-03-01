@@ -8,15 +8,10 @@ import ScorecardSkeleton from './Scorecard/ScorecardSkeleton';
 const API_KEY = '913046fd-62ec-4982-9a9e-feeb16170dc9';
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/currentMatches';
 
-
-
-
 function LiveScores() {
 
   const [matches, setMatches] = useState(undefined);
   const [error, setError] = useState(false);
-
-
 
   useEffect(() => {
     async function fetchData() {
@@ -38,10 +33,6 @@ function LiveScores() {
     if (!isReady())
       fetchData();
   }, []);
-
-  const isLive = (match) => {
-    return (match.matchStarted == true && match.matchEnded == false);
-  }
 
   const isReady = () => {
 
@@ -72,9 +63,7 @@ function LiveScores() {
         {
           isReady() ?
             matches.map(match => (
-              isLive(match)?
-                <Scorecard key={match.id} match={match} />
-                :<></>
+              <Scorecard key={match.id} match={match} />
               //< ScorecardSkeleton key = { match.id } id={match.id} />
             )) :
             [...Array(25).keys()].map(x => (

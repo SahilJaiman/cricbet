@@ -1,10 +1,11 @@
 import React from 'react'
+import Image from 'next/image';
 
 export default function Scorecard({ match }) {
 
     const live = match.matchStarted === true && match.matchEnded === false;
     return (
-        <div key={match.id} className="flex flex-col  h-full w-full border-2 mx-auto my-2 cursor-pointer max-w-sm sm:max-w-md overflow-auto transition duration-200 rounded-lg text-xs shadow-lg hover:scale-105 ">
+        <div key={match.id} className="flex flex-col  h-full w-full border-2  mx-auto my-2 cursor-pointer max-w-sm sm:max-w-md overflow-auto transition duration-200 rounded-lg text-xs shadow-lg hover:scale-105 ">
 
             <div className="flex items-center h-1/5 bg-base-200 p-2">
                 {live ?
@@ -42,11 +43,11 @@ export default function Scorecard({ match }) {
                         <img className="mr-2 w-6 self-center sm:w-10 rounded-full bg-cover" alt="home-logo" src={match.teamInfo[1].img} />
                         <div className="flex flex-col">
                             <p className="text-sm font-bold">{match.teamInfo[1].name}</p>
-                            <p className="opacity-60 sm:block">{match.score ? match.score[1].inning : ""}</p>
+                            <p className="opacity-60 sm:block">{match.score[1] ? match.score[1].inning : ""}</p>
                         </div>
                     </div>
                     <div className="flex items-center justify-end"></div>
-                    <p className="text-center text-lg font-semibold  sm:text-xl">{match.score ? match.score[1].r + "/" + match.score[1].w + "(" + match.score[1].o + ")" : "--"}</p>
+                    <p className="text-center text-lg font-semibold  sm:text-xl">{match.score[1] ? match.score[1].r + "/" + match.score[1].w + "(" + match.score[1].o + ")" : "--"}</p>
                 </div>
             </div>
 

@@ -1,29 +1,28 @@
 'use client';
 import React, { useState, useEffect } from 'react'
-import { addEventOperation, placeBetOperation, resolveBetOperation } from '@/utils/operation';
 import Navbar from '@/components/Navbar';
 import LiveScores from '@/components/LiveScores';
 import Footer from '@/components/Footer';
 
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Tabs from '@/components/Tabs';
 import Error from '@/components/Errorpage';
 import SeriesInfo from '@/components/SeriesInfo';
 
 
 
 
-export default function About() {
+export default function Matches() {
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
+      
     })
   }
 
-  const [activeTab, setActiveTab] = useState('current-matches');
+  const [activeTab, setActiveTab] = useState('series-info');
 
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
@@ -34,13 +33,14 @@ export default function About() {
 
   return (
     <div className="min-h-screen ">
-      <button
-        type="button"
+      <a
+        
         onClick={scrollToTop}
-        className="block fixed right-[10%] lg:right-[3%] bottom-[3%] lg:bottom-[5%] h-12 w-12 z-40  group btn no-animation animate-bounce  transition duration-300 ease-in-out items-center rounded-full p-3 shadow-2xl"
+        className="block fixed  backdrop-blur-sm text-center right-[10%] lg:right-[3%] bottom-[3%] lg:bottom-[5%] h-12 w-12 z-40  group  animate-bounce  transition duration-300 ease-in-out ring-2 rounded-full py-3 shadow-2xl cursor-pointer"
       >
-        <FontAwesomeIcon scale={2} icon={faArrowUp} />
-      </button>
+        
+        <FontAwesomeIcon className="scale-125" icon={faArrowUp} />
+      </a>
       <Navbar />
       <div className="flex justify-center mx-auto my-6 ">
 
@@ -55,7 +55,7 @@ export default function About() {
             className={`tab md:tab-lg tab-lifted ${activeTab === 'current-matches' ? 'tab-active' : ''}`}
             onClick={() => handleTabClick('current-matches')}
           >
-            Current Matches
+            Upcoming Matches
           </a>
           <a
             className={`tab md:tab-lg tab-lifted ${activeTab === 'live-matches' ? 'tab-active' : ''}`}
@@ -69,11 +69,11 @@ export default function About() {
       {(() => {
         switch (activeTab) {
           case 'live-matches':
-            return <Error/>
+            return <LiveScores/>;
           case 'series-info':
             return <SeriesInfo/>
           default:
-            return <LiveScores/>;
+            return <Error/>
         }
       })()}
 

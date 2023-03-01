@@ -1,20 +1,22 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { connectWallet, getAccount } from "../utils/wallet"
+import { connectWallet, disconnectWallet, getAccount } from "../utils/wallet"
 import { useRouter } from 'next/navigation';
+import { admin } from '@/utils/contract';
+
 export default function Navbar() {
 
 
 
-
-    const [account, setAccount] = useState("");
+    const [account, setAccount] = useState(null);
+    const [avatar, setAvatar] = useState("https://cdn-icons-png.flaticon.com/512/2202/2202112.png")
     const router = useRouter();
 
     const [theme, setTheme] = useState(
         localStorage.getItem('theme') || 'light'
     );
 
-    const themes = ["light", "dark", "cupcake", "bumblebee", "emerald", "corporate", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "black", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "night", "coffee", "winter"]
+    const themes = ["light", "dark", "cupcake", "retro", "forest", "aqua", "lofi", "pastel", "fantasy", "black", "luxury", "business",  "night", "winter"]
 
 
     const handleChange = (event) => {
@@ -32,16 +34,42 @@ export default function Navbar() {
     useEffect(() => {
         (async () => {
             const activeAccount = await getAccount();
+           
             setAccount(activeAccount);
         })();
+        
+    
     }, []);
+
+    useEffect(() => {
+        if (account == admin) {
+           
+            setAvatar("https://cdn-icons-png.flaticon.com/512/3135/3135715.png");
+        } else {
+            setAvatar("https://cdn-icons-png.flaticon.com/512/2202/2202112.png");
+        }
+    },[account])
 
     const onConnectWallet = async () => {
         await connectWallet();
         const activeAccount = await getAccount();
         setAccount(activeAccount);
+        if (activeAccount == admin) {
+            setAvatar("https://cdn-icons-png.flaticon.com/512/3135/3135715.png");
+        } else {
+            setAvatar("https://cdn-icons-png.flaticon.com/512/2202/2202112.png");
+        }
 
     };
+
+    const onDisconnectWallet = async () => {
+
+        await disconnectWallet();
+        const activeAccount = await getAccount();
+        console.log(activeAccount);
+        setAccount(activeAccount);
+        
+    }
 
 
     return (
@@ -60,9 +88,9 @@ export default function Navbar() {
                             </a>
                         </li>
                         <li>
-                            <a onClick={() => router.push('/about')}>
+                            <a onClick={() => router.push('/matches')}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                About
+                                Matches
                             </a>
                         </li>
                         <li>
@@ -88,9 +116,9 @@ export default function Navbar() {
                         </a>
                     </li>
                     <li>
-                        <a onClick={() => router.push('/about')}>
+                        <a onClick={() => router.push('/matches')}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            About
+                            Macthes
                         </a>
                     </li>
                     <li>
@@ -104,7 +132,8 @@ export default function Navbar() {
 
 
 
-            <div className="navbar-end space-x-4 ">
+
+            <div className="navbar-end mx-4 space-x-4 ">
                 <div className="dropdown dropdown-end">
                     <div tabIndex="0" className="btn gap-1 normal-case btn-ghost">
                         <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block h-5 w-5 stroke-current md:h-6 md:w-6">
@@ -135,21 +164,35 @@ export default function Navbar() {
                     </div>
                 </div>
 
+                <div className="dropdown dropdown-end ">
+                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                        <div className="w-10 bg-cover rounded-full">
+                            <img className="" src={avatar} />
+                        </div>
+                    </label>
+                    <ul tabIndex={0} className="menu menu-compact md:menu gap-4 dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <li className="tooltip tooltip-left" data-tip={account!=""?account:"Click here to connect!!"}>
 
+                            <a className="group justify-between" onClick={onConnectWallet}>
+                                {account ? "Connected" : "Connect Wallet"}
+                                <img className="w-5 h-5 group-hover:scale-125 transition duration-200 mr-1" src="/icon-128.png"></img>
+                            </a>
 
-                {/*<div className="dropdown">
-                    <select className="select select-md w-full max-w-xs" value={theme} onChange={handleChange}>
-                        {themes.map((item) => <option value={item}>{item[0].toLocaleUpperCase() + item.substring(1)}</option>)}
-                    </select>
-    </div>*/}
+                        </li>
+                        <li>
+                            <a className="justify-between">
+                                Profile
+                                <span className="badge">New</span>
+                            </a>
+                        </li>
 
-                <a className="btn  btn-outline group" onClick={onConnectWallet}>
-                   <img className="w-5 h-5 group-hover:scale-125 transition duration-200 mr-1" src="/icon-128.png"></img>
+                        <li><a onClick={onDisconnectWallet} >Logout</a></li>
 
-                    Connect Wallet
-                </a>
+                    </ul>
+                </div>
+
 
             </div>
-        </div>
+        </div >
     )
 }

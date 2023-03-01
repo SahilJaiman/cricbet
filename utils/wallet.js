@@ -5,8 +5,14 @@ export const wallet = new BeaconWallet({
 });
 
 export const connectWallet = async () => {
-    await wallet.requestPermissions({network:{type:"ghostnet"}});
+    await wallet.requestPermissions({ network: { type: "ghostnet" } });
 };
+
+export const disconnectWallet = async () => {
+
+
+    await wallet.clearActiveAccount();
+}
 
 
 export const getAccount = async () => {

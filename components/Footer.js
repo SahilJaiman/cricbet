@@ -6,7 +6,7 @@ export default function Footer() {
         <footer className="p-4 shadow md:px-6 md:py-8 ">
             <div className="sm:flex sm:items-center sm:justify-between">
                 <a href="/" className="flex items-center mb-4 sm:mb-0">
-                    <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" />
+                    <img src="/icon.png" className="h-8 mr-3 object-cover  " alt="Flowbite Logo" />
                     <span className="self-center text-2xl font-semibold whitespace-nowrap ">Cricbet</span>
                 </a>
                 <ul className="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0">
