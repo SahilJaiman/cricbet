@@ -12,3 +12,8 @@
 - Next.js
 - Tailwind CSS
 - Daisy UI
+
+## Contract
+- Address : KT1FoegKe8adSEtHmYz9AxE6DrgCCrcHpssP
+- TzKT : https://ghostnet.tzkt.io/KT1FoegKe8adSEtHmYz9AxE6DrgCCrcHpssP/operations/ 
+- Bcd : https://better-call.dev/ghostnet/KT1FoegKe8adSEtHmYz9AxE6DrgCCrcHpssP/operations
