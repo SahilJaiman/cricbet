@@ -1,6 +1,7 @@
+
 import React from "react";
 
-export default function Container(props) {
+export default function MyContainer(props) {
   return (
     <div
       className={`container p-8 mx-auto xl:px-0 ${
