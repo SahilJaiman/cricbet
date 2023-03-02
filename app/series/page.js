@@ -6,8 +6,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Error from '@/components/Errorpage';
 import { addEventOperation, placeBetOperation, resolveBetOperation } from '@/utils/operation';
+import { API_KEY } from '../constants';
 
-const API_KEY = '913046fd-62ec-4982-9a9e-feeb16170dc9';
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/series_info';
 
 const SeriesPage = () => {
