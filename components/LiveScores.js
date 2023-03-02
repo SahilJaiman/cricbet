@@ -5,7 +5,7 @@ import Loading from './Loading';
 import Scorecard from './Scorecard/Scorecard';
 import ScorecardSkeleton from './Scorecard/ScorecardSkeleton';
 
-import { API_KEY } from '@/app/constants';
+import { getApiKey } from '@/app/constants';
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/currentMatches';
 
 
@@ -21,6 +21,7 @@ function LiveScores() {
   useEffect(() => {
     async function fetchData() {
       try {
+        const API_KEY = await getApiKey();
         const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&offset=0`);
 
         const data = await res.json();

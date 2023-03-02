@@ -6,7 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Error from '@/components/Errorpage';
 import { addEventOperation, placeBetOperation, resolveBetOperation } from '@/utils/operation';
-import { API_KEY } from '../constants';
+import { getApiKey } from '@/app/constants';
 
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/series_info';
 
@@ -43,6 +43,7 @@ const SeriesPage = () => {
     useEffect(() => {
         const fetchSeriesData = async () => {
             try {
+                const API_KEY =await getApiKey();
                 const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&id=${seriesId}`);
 
                 const data = await res.json();

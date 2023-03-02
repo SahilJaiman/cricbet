@@ -2,12 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import Error from './Errorpage';
 import Loading from './Loading';
-import Scorecard from './Scorecard/Scorecard';
-import ScorecardSkeleton from './Scorecard/ScorecardSkeleton';
+
 import { fetchStorage } from '@/utils/tzkt';
 import axios from "axios";
 import Eventcard from './Scorecard/Eventcard';
-import { API_KEY } from '@/app/constants';
+
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/currentMatches';
 
 function LiveEvents() {

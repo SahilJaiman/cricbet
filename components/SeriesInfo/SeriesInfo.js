@@ -1,19 +1,24 @@
 'use client';
+import { getApiKey } from '@/app/constants';
 import React, { useState, useEffect } from 'react';
 import Error from '../Errorpage';
 import Loading from '../Loading';
 import SeriesInfoCard from './SeriesInfoCard';
 
-import { API_KEY } from '@/app/constants';
+
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/series';
+
 
 export default function SeriesInfo() {
     const [series, setSeries] = useState(undefined);
     const [error, setError] = useState(false);
 
     useEffect(() => {
+     
         async function fetchData() {
             try {
+                const API_KEY =await getApiKey();
+              
                 const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&offset=0`);
 
                 const data = await res.json();

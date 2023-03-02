@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image';
 import Loading from '../Loading';
-import { API_KEY } from '@/app/constants';
+import { getApiKey } from '@/app/constants';
 import { fetchStorage } from '@/utils/tzkt';
 import axios from "axios";
 import { placeBetOperation } from '@/utils/operation';
@@ -56,6 +56,7 @@ export default function Eventcard({ e }) {
     useEffect(() => {
         async function fetchData() {
             try {
+                const API_KEY =await getApiKey();
                 const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&id=${event.key}`);
 
                 const data = await res.json();
