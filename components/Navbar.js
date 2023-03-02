@@ -14,7 +14,7 @@ export default function Navbar() {
 
     const [theme, setTheme] = useState(
         typeof window !== 'undefined'?
-        localStorage.getItem('theme') || 'light':light
+        localStorage.getItem('theme') || 'light':'light'
     );
 
     const themes = ["light", "dark", "cupcake", "retro", "forest", "aqua", "lofi", "pastel", "fantasy", "black", "luxury", "business",  "night", "winter"]
@@ -27,8 +27,9 @@ export default function Navbar() {
     };
 
     useEffect(() => {
-        typeof window !== 'undefined'?
-        localStorage.setItem('theme', theme):light;
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('theme', theme);
+        }
         document.querySelector('html').setAttribute('data-theme', theme);
     }, [theme]);
 
