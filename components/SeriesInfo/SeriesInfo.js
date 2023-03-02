@@ -1,10 +1,10 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import Error from './Errorpage';
-import Loading from './Loading';
+import Error from '../Errorpage';
+import Loading from '../Loading';
 import SeriesInfoCard from './SeriesInfoCard';
 
-const API_KEY = '3730f165-e9f9-48d3-8e49-0efe28f1b502';
+import { API_KEY } from '@/app/constants';
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/series';
 
 export default function SeriesInfo() {
@@ -55,7 +55,7 @@ export default function SeriesInfo() {
         <div>
 
             <div className="p-6">
-                <h2 className="text-2xl text-center mb-8 font-bold">Series List</h2>
+                {/*<h2 className="text-2xl text-center mb-8 font-bold">Series List</h2>*/}
                 <div className="grid gap-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {
                         isReady() ?

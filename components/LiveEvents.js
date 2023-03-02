@@ -4,42 +4,38 @@ import Error from './Errorpage';
 import Loading from './Loading';
 import Scorecard from './Scorecard/Scorecard';
 import ScorecardSkeleton from './Scorecard/ScorecardSkeleton';
-
-const API_KEY = '913046fd-62ec-4982-9a9e-feeb16170dc9';
+import { fetchStorage } from '@/utils/tzkt';
+import axios from "axios";
+import Eventcard from './Scorecard/Eventcard';
+import { API_KEY } from '@/app/constants';
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/currentMatches';
 
-function LiveScores() {
+function LiveEvents() {
 
-  const [matches, setMatches] = useState(undefined);
+  const [events, setEvents] = useState(undefined);
+
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&offset=0`);
 
-        const data = await res.json();
+    (async () => {
 
-        console.log(data);
-        setMatches(data.data);
-
-
-      } catch (error) {
-        setError(true);
-        console.log(error);
-      }
-    }
-
-    if (!isReady())
-      fetchData();
+      const storage = await fetchStorage();
+      var id = storage.events;
+      const res = await axios.get(`https://api.ghostnet.tzkt.io/v1/bigmaps/${id}/keys`);
+      setEvents(res.data);
+      
+    })();
+ 
   }, []);
 
   const isReady = () => {
 
-
+    
     return (
 
-      typeof matches !== 'undefined'
+      typeof events !== 'undefined'
+     
 
 
     );
@@ -58,17 +54,14 @@ function LiveScores() {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl text-center mb-8 font-bold">Live Cricket Scores</h2>
+      {/*<h2 className="text-2xl text-center mb-8 font-bold">Live Events</h2>*/}
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {
           isReady() ?
-            matches.map(match => (
-              <Scorecard key={match.id} match={match} />
-              //< ScorecardSkeleton key = { match.id } id={match.id} />
+            events.map(event => (
+              <Eventcard key={event.id} e={event} />
             )) :
-            [...Array(25).keys()].map(x => (
-              < ScorecardSkeleton key = {x} id={x} />
-            ))
+            <></>
 
         }
 
@@ -79,4 +72,4 @@ function LiveScores() {
   );
 }
 
-export default LiveScores;
+export default LiveEvents;

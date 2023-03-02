@@ -7,7 +7,8 @@ import Footer from '@/components/Footer';
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Error from '@/components/Errorpage';
-import SeriesInfo from '@/components/SeriesInfo';
+import SeriesInfo from '@/components/SeriesInfo/SeriesInfo';
+import LiveEvents from '@/components/LiveEvents';
 
 
 
@@ -46,19 +47,19 @@ export default function Matches() {
 
         <div className="tabs">
           <a
-            className={`tab md:tab-lg tab-lifted ${activeTab === 'series-info' ? 'tab-active' : ''}`}
+            className={`tab sm:tab-md md:tab-lg tab-lifted ${activeTab === 'series-info' ? 'tab-active' : ''}`}
             onClick={() => handleTabClick('series-info')}
           >
             Series Info
           </a>
           <a
-            className={`tab md:tab-lg tab-lifted ${activeTab === 'current-matches' ? 'tab-active' : ''}`}
-            onClick={() => handleTabClick('current-matches')}
+            className={`tab sm:tab-md md:tab-lg tab-lifted ${activeTab === 'live-events' ? 'tab-active' : ''}`}
+            onClick={() => handleTabClick('live-events')}
           >
-            Upcoming Matches
+            Live Events
           </a>
           <a
-            className={`tab md:tab-lg tab-lifted ${activeTab === 'live-matches' ? 'tab-active' : ''}`}
+            className={`tab sm:tab-md md:tab-lg tab-lifted ${activeTab === 'live-matches' ? 'tab-active' : ''}`}
             onClick={() => handleTabClick('live-matches')}
           >
             Live Matches
@@ -73,7 +74,7 @@ export default function Matches() {
           case 'series-info':
             return <SeriesInfo/>
           default:
-            return <Error/>
+            return <LiveEvents/>
         }
       })()}
 

@@ -1,7 +1,13 @@
-import React from 'react'
+'use client';
+import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 
+
 export default function Hero() {
+
+
+
+
     return (
         <div className="container flex flex-col justify-between items-center mx-auto p-6 lg:flex-row">
 

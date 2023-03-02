@@ -26,17 +26,18 @@ export const  addEventOperation = async (match) => {
 
 
 
-export const placeBetOperation = async () => {
+export const placeBetOperation = async (id,team,amt ) => {
     try {
         const contractInstance = await tezos.wallet.at(contractAddress);
         const op = await contractInstance.methods.placeBet(
+                team,
+                id,
+                
             
-                "Match01",
-                "India"
-            
-        ).send(
-            
-        );
+        ).send({
+            amount: amt,
+            mutez:false,
+        });
         await op.confirmation(1);
     } catch (err) {
         throw err;

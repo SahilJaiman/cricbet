@@ -5,7 +5,7 @@ import Loading from './Loading';
 import Scorecard from './Scorecard/Scorecard';
 import ScorecardSkeleton from './Scorecard/ScorecardSkeleton';
 
-const API_KEY = '913046fd-62ec-4982-9a9e-feeb16170dc9';
+import { API_KEY } from '@/app/constants';
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/currentMatches';
 
 
@@ -67,7 +67,7 @@ function LiveScores() {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl text-center mb-8 font-bold">Live Cricket Scores</h2>
+      {/*<h2 className="text-2xl text-center mb-8 font-bold">Live Cricket Scores</h2>*/}
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {
           isReady() ?

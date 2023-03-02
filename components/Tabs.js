@@ -16,8 +16,8 @@ function Tabs() {
         Series Info
       </a>
       <a
-        className={`tab tab-lifted ${activeTab === 'current-matches' ? 'tab-active' : ''}`}
-        onClick={() => handleTabClick('current-matches')}
+        className={`tab tab-lifted ${activeTab === 'live-events' ? 'tab-active' : ''}`}
+        onClick={() => handleTabClick('live-events')}
       >
         Current Matches
       </a>
