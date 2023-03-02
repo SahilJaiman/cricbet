@@ -24,7 +24,7 @@ export default function Hero() {
                 </p>
                 <div className="mx-auto lg:mx-0">
                     <a
-                        href="#"
+                        href="/macthes"
                         className="btn btn-active btn-primary rounded-full  hover:opacity-70"
                     >Get Started</a
                     >
