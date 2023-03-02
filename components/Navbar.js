@@ -13,7 +13,8 @@ export default function Navbar() {
     const router = useRouter();
 
     const [theme, setTheme] = useState(
-        localStorage.getItem('theme') || 'light'
+        typeof window !== 'undefined'?
+        localStorage.getItem('theme') || 'light':light
     );
 
     const themes = ["light", "dark", "cupcake", "retro", "forest", "aqua", "lofi", "pastel", "fantasy", "black", "luxury", "business",  "night", "winter"]
@@ -26,7 +27,8 @@ export default function Navbar() {
     };
 
     useEffect(() => {
-        localStorage.setItem('theme', theme);
+        typeof window !== 'undefined'?
+        localStorage.setItem('theme', theme):light;
         document.querySelector('html').setAttribute('data-theme', theme);
     }, [theme]);
 
