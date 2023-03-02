@@ -104,7 +104,7 @@ export default function Navbar() {
                         </li>
                     </ul>
                 </div>
-                <a className="btn  bg-gradient-to-r from-indigo-400 to-cyan-400 inline-block text-transparent bg-clip-text btn-ghost normal-case text-2xl font-bold ">
+                <a onClick={router.push('/')} className="btn  bg-gradient-to-r from-indigo-400 to-cyan-400 inline-block text-transparent bg-clip-text btn-ghost normal-case text-2xl font-bold ">
                     Cricbet
                     
                 </a>
