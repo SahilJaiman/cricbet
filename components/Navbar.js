@@ -101,9 +101,9 @@ export default function Navbar() {
                         </li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl ">
-
+                <a className="btn  bg-gradient-to-r from-indigo-400 to-cyan-400 inline-block text-transparent bg-clip-text btn-ghost normal-case text-2xl font-bold ">
                     Cricbet
+                    
                 </a>
             </div>
             <div className="navbar-center hidden lg:flex">
