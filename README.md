@@ -5,6 +5,8 @@
 - Cricbet uses smart contracts to automate the betting process and ensure that all transactions are fair and transparent.
 - With Cricbet, users can bet on their favorite cricket teams and players while enjoying a safe and secure betting experience.
 
+## How to use?
+
 ## Technologies
 - Tezos
 - SmartPy
