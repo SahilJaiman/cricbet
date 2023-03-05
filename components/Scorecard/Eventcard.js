@@ -10,7 +10,7 @@ import CountdownTimer from './CountdownTimer';
 
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/match_info';
 
-export default function Eventcard({ e }) {
+export default function Eventcard({ e,API_KEY }) {
 
     const [match, setMatch] = useState(undefined);
     const [error, setError] = useState(false);
@@ -56,7 +56,7 @@ export default function Eventcard({ e }) {
     useEffect(() => {
         async function fetchData() {
             try {
-                const API_KEY =await getApiKey();
+               
                 const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&id=${event.key}`);
 
                 const data = await res.json();
@@ -192,8 +192,8 @@ export default function Eventcard({ e }) {
                             <div className="text-xl text-center  font-bold mb-2">Select Team</div>
                             <div className="text-center  mb-4">Select team to bet!</div>
                             <div className="flex justify-center gap-2">
-                                <button onClick={() => { onPlaceBet(match.teamInfo[0].name) }} className="btn btn-outline btn w-16  btn-sm">{match.teamInfo[0].shortname}</button>
-                                <button onClick={() => { onPlaceBet(match.teamInfo[1].name) }} className="btn btn-outline btn w-16 btn-sm">{match.teamInfo[1].shortname}</button>
+                                <button onClick={() => { onPlaceBet(match.teamInfo[0].name) }} className="btn btn-outline w-16  btn-sm">{match.teamInfo[0].shortname}</button>
+                                <button onClick={() => { onPlaceBet(match.teamInfo[1].name) }} className="btn btn-outline w-16 btn-sm">{match.teamInfo[1].shortname}</button>
                             </div>
                         </div>
                     </div>

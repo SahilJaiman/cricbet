@@ -15,13 +15,14 @@ export default function SeriesInfoCard({ series }) {
 
     return (
         <div>
-            <div className="card ring-2 ring-secondary bg-base-100 shadow-xl hover:scale-105 transition duration-300">
-                <div className="card-body">
-                    <h2 className="card-title">{series.name}</h2>
+            <div className="rounded-xl ring-2 ring-secondary bg-base-100 shadow-xl hover:scale-105 transition duration-300">
+                <div className="card-body flex justify-center ">
+                    <h2 className="card-title ">{series.name}</h2>
+                    <div className="flex flex-col  justify-between">
                     <p>Start Date: {series.startDate}</p>
                     <p>End Date: {series.endDate}</p>
-                    
-                    <div className="divider "></div>
+                    </div>
+                  <hr></hr>
                     <div className="card-actions justify-center">
                         <div className="flex gap-4">
                             <button onClick={() => onHandleClick(series.id)} className="btn btn-sm btn-primary ">Series Details</button>

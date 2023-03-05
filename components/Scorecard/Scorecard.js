@@ -30,11 +30,11 @@ export default function Scorecard({ match }) {
                         <img className="mr-2 w-6 self-center sm:w-10 rounded-full bg-cover" alt="away-logo" src={match.teamInfo[0].img} />
                         <div className="flex flex-col">
                             <p className="text-sm font-bold">{match.teamInfo[0].name}</p>
-                            <p className=" opacity-60 sm:block">{match.score ? match.score[0].inning : ""}</p>
+                            <p className=" opacity-60 sm:block">{match.score[0] ? match.score[0].inning : ""}</p>
                         </div>
                     </div>
                     <div className="flex items-center justify-end"></div>
-                    <p className="text-center text-lg  font-semibold sm:text-xl">{match.score ? match.score[0].r + "/" + match.score[0].w  + "(" + match.score[0].o + ")" : "--"}</p>
+                    <p className="text-center text-lg  font-semibold sm:text-xl">{match.score[0] ? match.score[0].r + "/" + match.score[0].w  + "(" + match.score[0].o + ")" : "--"}</p>
                 </div>
                 <div className="flex items-center justify-center">
                     <span className="h-fit w-6 rounded-md bg-base-200 p-1 text-center">VS</span>

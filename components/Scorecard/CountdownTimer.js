@@ -33,14 +33,9 @@ function CountdownTimer({ eventStartDate }) {
 
 
 
-
-
-
-
-
     return (
 
-        <div className="flex gap-5">
+        <div className="flex gap-4">
             <div>
                 <span className="countdown font-mono text-lg">
                     <span style={{ "--value": months }}></span>

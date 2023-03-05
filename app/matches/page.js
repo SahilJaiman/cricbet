@@ -9,17 +9,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Error from '@/components/Errorpage';
 import SeriesInfo from '@/components/SeriesInfo/SeriesInfo';
 import LiveEvents from '@/components/LiveEvents';
-
+import { motion, useScroll } from 'framer-motion';
 
 
 
 export default function Matches() {
 
+  const { scrollYProgress } = useScroll();
+
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-      
+
     })
   }
 
@@ -34,12 +37,12 @@ export default function Matches() {
 
   return (
     <div className="min-h-screen ">
+      <motion.div className='fixed z-50 top-0 left-0 right-0 h-2 bg-primary ' style={{ scaleX: scrollYProgress }} />
       <a
-        
+
         onClick={scrollToTop}
-        className="block fixed  backdrop-blur-sm text-center right-[10%] lg:right-[3%] bottom-[3%] lg:bottom-[5%] h-12 w-12 z-40  group  animate-bounce  transition duration-300 ease-in-out ring-2 rounded-full py-3 shadow-2xl cursor-pointer"
+        className="block fixed backdrop-blur-sm text-center right-[10%] lg:right-[3%] bottom-[3%] lg:bottom-[5%] h-12 w-12 z-40  group  animate-bounce  transition duration-300 ease-in-out ring-2 rounded-full py-3 shadow-2xl cursor-pointer"
       >
-        
         <FontAwesomeIcon className="scale-125" icon={faArrowUp} />
       </a>
       <Navbar />
@@ -70,11 +73,11 @@ export default function Matches() {
       {(() => {
         switch (activeTab) {
           case 'live-matches':
-            return <LiveScores/>;
+            return <LiveScores />;
           case 'series-info':
-            return <SeriesInfo/>
+            return <SeriesInfo />
           default:
-            return <LiveEvents/>
+            return <LiveEvents />
         }
       })()}
 

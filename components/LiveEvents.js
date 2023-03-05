@@ -6,6 +6,7 @@ import Loading from './Loading';
 import { fetchStorage } from '@/utils/tzkt';
 import axios from "axios";
 import Eventcard from './Scorecard/Eventcard';
+import { getApiKey } from '@/app/constants';
 
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/currentMatches';
 
@@ -14,27 +15,32 @@ function LiveEvents() {
   const [events, setEvents] = useState(undefined);
 
   const [error, setError] = useState(false);
+  const [key, setKey] = useState(false);
 
   useEffect(() => {
 
     (async () => {
-
+      const API_KEY = await getApiKey();
+      setKey(API_KEY);
       const storage = await fetchStorage();
       var id = storage.events;
       const res = await axios.get(`https://api.ghostnet.tzkt.io/v1/bigmaps/${id}/keys`);
-      setEvents(res.data);
-      
+      let e = res.data;
+
+      e.sort((a, b) => new Date(a.value.eventStartTime) - new Date(b.value.eventStartTime));
+      setEvents(e);
+
     })();
- 
-  }, []);
+
+  }, );
 
   const isReady = () => {
 
-    
+
     return (
 
       typeof events !== 'undefined'
-     
+
 
 
     );
@@ -58,7 +64,7 @@ function LiveEvents() {
         {
           isReady() ?
             events.map(event => (
-              <Eventcard key={event.id} e={event} />
+              <Eventcard key={event.id} e={event} API_KEY={key} />
             )) :
             <></>
 
