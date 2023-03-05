@@ -11,7 +11,7 @@ export default function Footer() {
 
                 <div className="grid grid-flow-col gap-4">
                     <a href='/matches' className="link link-hover">Matches</a>
-                    <a className="link link-hover">How to use</a>
+                    <a href='https://github.com/SahilJaiman/cricbet#how-to-use' className="link link-hover">How to use</a>
                     <a className="link link-hover">Privacy Policy</a>
                     <a className="link link-hover">Contact</a>
                 </div>
