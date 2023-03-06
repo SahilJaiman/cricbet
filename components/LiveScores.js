@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Error from './Errorpage';
+import ApiErrorPage from './ApiErrorPage';
 import Loading from './Loading';
 import Scorecard from './Scorecard/Scorecard';
 import ScorecardSkeleton from './Scorecard/ScorecardSkeleton';
@@ -26,7 +27,7 @@ function LiveScores() {
           setError(true);
           return;
         }
-  
+
 
         const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&offset=0`);
 
@@ -69,7 +70,12 @@ function LiveScores() {
   }*/
 
   if (error == true) {
-    return <Error />
+    return (
+      < div className=" flex-col flex flex-1 h-full" >
+        <ApiErrorPage />(
+
+      </div >
+    )
   }
 
   return (
@@ -79,13 +85,13 @@ function LiveScores() {
         {
           isReady() ?
             matches.map(match => (
-              isLive(match)?
+              isLive(match) ?
                 <Scorecard key={match.id} match={match} />
-                :<></>
+                : <></>
               //< ScorecardSkeleton key = { match.id } id={match.id} />
             )) :
             [...Array(25).keys()].map(x => (
-              < ScorecardSkeleton key = {x} id={x} />
+              < ScorecardSkeleton key={x} id={x} />
             ))
 
         }

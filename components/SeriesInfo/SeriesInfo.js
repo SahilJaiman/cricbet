@@ -5,6 +5,7 @@ import Error from '../Errorpage';
 import Loading from '../Loading';
 import SeriesInfoCard from './SeriesInfoCard';
 import { motion, AnimatePresence } from 'framer-motion';
+import ApiErrorPage from '../ApiErrorPage';
 
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/series';
 
@@ -50,7 +51,12 @@ export default function SeriesInfo() {
     }
 
     if (error == true) {
-        return <Error />
+        return (
+            < div className=" flex-col flex flex-1 h-full" >
+                 <ApiErrorPage />(
+
+            </div >
+        )
     }
 
     if (!isReady()) {
@@ -63,7 +69,7 @@ export default function SeriesInfo() {
 
     return (
         <div>
-           {/*} <AnimatePresence>
+            {/*} <AnimatePresence>
                 {selectedId && (
                     <>
                     <div class="bg-gray-900 blur-xl bg-opacity-50 fixed inset-0 z-50"></div>
@@ -86,7 +92,7 @@ export default function SeriesInfo() {
                 )}
                 </AnimatePresence>*/
             }
-            
+
             <div className="p-6">
                 {/*<h2 className="text-2xl text-center mb-8 font-bold">Series List</h2>*/}
                 <div className="grid gap-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

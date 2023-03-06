@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Error from './Errorpage';
+import ApiErrorPage from './ApiErrorPage';
 import Loading from './Loading';
 
 import { fetchStorage } from '@/utils/tzkt';
@@ -53,7 +54,12 @@ function LiveEvents() {
   }
 
   if (error == true) {
-    return <Error />
+    return (
+      < div className=" flex-col flex flex-1 h-full" >
+        <ApiErrorPage />(
+
+      </div >
+    )
   }
 
 
