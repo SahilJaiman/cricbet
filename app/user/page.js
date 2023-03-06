@@ -7,22 +7,31 @@ import Error from '@/components/Errorpage';
 import { getAccount } from '@/utils/wallet';
 import AccessDenied from '@/components/AccessDenied';
 import { fetchStorage } from '@/utils/tzkt';
-
+import Loading from '@/components/Loading';
 
 
 const UserPage = () => {
 
     const searchParams = useSearchParams();
     const userId = searchParams.get('userId');
-    const [account, setAccount] = useState(null);
+    const [account, setAccount] = useState("");
     const [bets, setBets] = useState([]);
+    const [error, setError] = useState(false);
 
 
     const isReady = () => {
 
         return (
-            account != null && userId === account
+            (account !== "")
         );
+    }
+
+    const isError = () => {
+        if (isReady()) {
+            return userId !== account;
+        }
+        return false;
+        
     }
 
     useEffect(() => {
@@ -50,19 +59,25 @@ const UserPage = () => {
                         team: value
                     })
                 }
-           
+
             });
             setBets(arr);
 
 
         })();
 
-    }, );
+    },);
 
     if (!isReady()) {
         return (
-            <AccessDenied />
+            <div className="flex flex-col flex-1 h-screen">
+                <Loading />
+            </div>
         )
+    }
+
+    if (isError()) {
+        return <AccessDenied/>
     }
 
 
@@ -82,7 +97,7 @@ const UserPage = () => {
                     <div className="flex-1 flex flex-col-reverse lg:flex-row gap-4 justify-center rounded-lg z-10 backdrop-blur-2xl p-2 border-2 ">
                         <div className='flex flex-1 flex-col '>
                             <div className="flex flex-col items-center text-xl font-bold mb-4 ">
-                            <button className="btn btn-block ">My Bets</button>
+                                <button className="btn btn-block ">My Bets</button>
                             </div>
 
                             <div className='grid p-4 gap-2 grid-cols-1 max-h-96 overflow-y-auto '>
