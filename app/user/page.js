@@ -28,7 +28,7 @@ const UserPage = () => {
 
     const isError = () => {
         if (isReady()) {
-            return userId !== account;
+            return userId="" || userId !== account;
         }
         return false;
         
