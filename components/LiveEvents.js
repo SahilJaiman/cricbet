@@ -35,7 +35,8 @@ function LiveEvents() {
       let e = res.data;
 
       e.sort((a, b) => new Date(a.value.eventStartTime) - new Date(b.value.eventStartTime));
-      setEvents(e);
+
+      setEvents(e.filter((ev)=>new Date(ev.value.eventStartTime)>new Date()));
 
     })();
 
