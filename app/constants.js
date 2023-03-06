@@ -12,7 +12,7 @@ const API_KEYS = [API_KEY_1, API_KEY_2, API_KEY_3, API_KEY_4,API_KEY_5];
 
 export const getApiKey = async () => {
     
-    return API_KEY_5;
+   
     for (const key of API_KEYS) {
         
         const status = await checkApiKeyStatus(key);
