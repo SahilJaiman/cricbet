@@ -17,7 +17,7 @@ export const getApiKey = async () => {
     for (const key of API_KEYS) {
         
         const status = await checkApiKeyStatus(key);
-        
+       
         if (status === "success") {
             console.log("API Key", key);
             return key;
@@ -32,6 +32,7 @@ async function checkApiKeyStatus(key) {
     const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${key}&offset=0`);
 
     const data = await res.json();
+    console.log("Data", data);
 
     return data.status;
 }

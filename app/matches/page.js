@@ -42,9 +42,9 @@ export default function Matches() {
       <a
 
         onClick={scrollToTop}
-        className="block fixed backdrop-blur-sm text-center right-[10%] lg:right-[3%] bottom-[3%] lg:bottom-[5%] h-12 w-12 z-40  group  animate-bounce  transition duration-300 ease-in-out ring-2 rounded-full py-3 shadow-2xl cursor-pointer"
+        className="flex justify-center items-center fixed backdrop-blur-sm text-center right-[10%] lg:right-[3%] bottom-[3%] lg:bottom-[5%] h-12 w-12 z-40  group  animate-bounce  transition duration-300 ease-in-out ring-2 rounded-full py-3 shadow-2xl cursor-pointer"
       >
-        <FontAwesomeIcon className="scale-125" icon={faArrowUp} />
+        <FontAwesomeIcon  width={16} height={16}  icon={faArrowUp} />
       </a>
       <Navbar />
       <div className="flex justify-center mx-auto my-6 ">
