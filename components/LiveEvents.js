@@ -39,7 +39,7 @@ function LiveEvents() {
 
     })();
 
-  },);
+  },[]);
 
   const isReady = () => {
 

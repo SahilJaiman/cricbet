@@ -61,7 +61,7 @@ export default function Eventcard({ e,API_KEY }) {
 
                 const data = await res.json();
 
-                console.log(data);
+                console.log("Event Data",data);
                 setMatch(data.data);
 
 
@@ -106,7 +106,7 @@ export default function Eventcard({ e,API_KEY }) {
     return (
         <div key={match.id} className=" relative flex flex-col h-full w-full border-2  mx-auto cursor-pointer max-w-sm sm:max-w-md  transition duration-200 rounded-lg text-xs shadow-lg hover:scale-105 ">
 
-            <div className="flex flex-col items-center bg-base-200 p-2">
+            <div className="flex flex-row items-center bg-base-200 p-2">
                 {live ?
                     <div className="flex flex-row gap-2 rounded-2xl border-2 border-base-200 bg-base-100 px-2 py-1">
                         <span className="flex items-center justify-center">

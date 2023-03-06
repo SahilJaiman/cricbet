@@ -99,7 +99,7 @@ export default function SeriesInfo() {
                     {
                         isReady() ?
                             series.map(ser => (
-                                <motion.div layoutId={ser.id} onClick={() => setSelectedId(ser.id)}>
+                                <motion.div key={ser.id} layoutId={ser.id} onClick={() => setSelectedId(ser.id)}>
                                     <SeriesInfoCard key={ser.id} series={ser} />
                                 </motion.div>
                             )) :
