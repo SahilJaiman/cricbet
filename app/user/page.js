@@ -28,10 +28,10 @@ const UserPage = () => {
 
     const isError = () => {
         if (isReady()) {
-            return userId="" || userId !== account;
+            return userId !== account;
         }
         return false;
-        
+
     }
 
     useEffect(() => {
@@ -68,6 +68,15 @@ const UserPage = () => {
 
     },);
 
+    if (userId === "") {
+        return (
+            < div className=" flex-col flex flex-1 h-screen" >
+                <Error />
+
+            </div >
+        )
+    }
+
     if (!isReady()) {
         return (
             <div className="flex flex-col flex-1 h-screen">
@@ -76,8 +85,8 @@ const UserPage = () => {
         )
     }
 
-    if (isError()) {
-        return <AccessDenied/>
+    if (userId === "" || isError()) {
+        return <AccessDenied />
     }
 
 
