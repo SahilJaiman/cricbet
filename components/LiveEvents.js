@@ -7,6 +7,7 @@ import { fetchStorage } from '@/utils/tzkt';
 import axios from "axios";
 import Eventcard from './Scorecard/Eventcard';
 import { getApiKey } from '@/app/constants';
+import { API_KEY_ERROR } from '@/app/constants';
 
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/currentMatches';
 
@@ -21,6 +22,11 @@ function LiveEvents() {
 
     (async () => {
       const API_KEY = await getApiKey();
+      if (API_KEY == API_KEY_ERROR) {
+        setError(true);
+        return;
+      }
+
       setKey(API_KEY);
       const storage = await fetchStorage();
       var id = storage.events;
@@ -32,7 +38,7 @@ function LiveEvents() {
 
     })();
 
-  }, );
+  },);
 
   const isReady = () => {
 
@@ -45,6 +51,20 @@ function LiveEvents() {
 
     );
   }
+
+  if (error == true) {
+    return <Error />
+  }
+
+
+  if (!isReady()) {
+    return (
+      <div className="flex flex-col flex-1 h-full">
+        <Loading />
+      </div>
+    )
+  }
+
   /*if (!isReady() && !error) {
     return (
       <div>

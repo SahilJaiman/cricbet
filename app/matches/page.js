@@ -36,7 +36,8 @@ export default function Matches() {
 
 
   return (
-    <div className="min-h-screen ">
+    <>
+    <div className="min-h-screen flex flex-col">
       <motion.div className='fixed z-50 top-0 left-0 right-0 h-2 bg-primary ' style={{ scaleX: scrollYProgress }} />
       <a
 
@@ -81,7 +82,9 @@ export default function Matches() {
         }
       })()}
 
-      <Footer />
+      
     </div>
+      <Footer />
+      </>
   )
 }

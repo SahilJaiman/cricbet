@@ -22,6 +22,12 @@ function LiveScores() {
     async function fetchData() {
       try {
         const API_KEY = await getApiKey();
+        if (API_KEY == API_KEY_ERROR) {
+          setError(true);
+          return;
+        }
+  
+
         const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&offset=0`);
 
         const data = await res.json();

@@ -3,6 +3,7 @@ const API_KEY_2 = '3730f165-e9f9-48d3-8e49-0efe28f1b502';
 const API_KEY_3 = '6be2f7db-02c6-40de-8b9c-41f4ffe729fb';
 const API_KEY_4 = '238f0a7f-9ff3-4881-ad1e-6cbe97088d6f';
 const API_KEY_5 = '0831037a-d0e1-4f88-86c1-a47bd96341ea';
+export const API_KEY_ERROR = '404';
 
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/countries';
 
@@ -22,7 +23,7 @@ export const getApiKey = async () => {
             return key;
         }
     }
-    return API_KEY_1;
+    return API_KEY_ERROR;
 
 }
 

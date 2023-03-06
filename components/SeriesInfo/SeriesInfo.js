@@ -1,5 +1,5 @@
 'use client';
-import { getApiKey } from '@/app/constants';
+import { API_KEY_ERROR, getApiKey } from '@/app/constants';
 import React, { useState, useEffect } from 'react';
 import Error from '../Errorpage';
 import Loading from '../Loading';
@@ -19,6 +19,10 @@ export default function SeriesInfo() {
         async function fetchData() {
             try {
                 const API_KEY = await getApiKey();
+                if (API_KEY == API_KEY_ERROR) {
+                    setError(true);
+                    return;
+                }
 
                 const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&offset=0`);
 
@@ -51,7 +55,7 @@ export default function SeriesInfo() {
 
     if (!isReady()) {
         return (
-            <div className="h-full">
+            <div className=" flex-col flex flex-1 h-full">
                 <Loading />
             </div>
         )
