@@ -23,27 +23,27 @@ const SeriesPage = () => {
 
     const onAddEvent = async (match) => {
         try {
-          setLoadingAddEevnt(match.id);
+            setLoadingAddEevnt(match.id);
             await addEventOperation(
                 {
                     id: match.id,
                     startTime: match.dateTimeGMT,
-                    teamA:match.teams[0],
-                    teamB:match.teams[1],
+                    teamA: match.teams[0],
+                    teamB: match.teams[1],
                 }
             );
-          alert("Transaction Confirmend!");
+            alert("Transaction Confirmend!");
         } catch (err) {
-          alert("Transaction failed: " + err.message);
+            alert("Transaction failed: " + err.message);
         }
-    
+
         setLoadingAddEevnt(null);
-      };
+    };
 
     useEffect(() => {
         const fetchSeriesData = async () => {
             try {
-                const API_KEY =await getApiKey();
+                const API_KEY = await getApiKey();
                 const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&id=${seriesId}`);
 
                 const data = await res.json();
@@ -74,58 +74,61 @@ const SeriesPage = () => {
     }
 
     return (
-        <div className="min-h-screen flex flex-col ">
-            <Navbar />
-            
-            <div className="flex-1 p-6">
-                <h2 className="text-2xl text-center mb-8 font-bold">{series ? series.name : "Series Details"}</h2>
+        <>
+            <div className="min-h-screen flex flex-col ">
+                <Navbar />
 
-                <div className="  ">
-                    <div className="overflow-auto">
-                        <table className="table table-normal  h-full w-full">
+                <div className="flex-1 p-6">
+                    <h2 className="text-2xl text-center mb-8 font-bold">{series ? series.name : "Series Details"}</h2>
 
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Venue</th>
-                                    <th>Status</th>
-                                    <th>Date (IST)</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    <div className="  ">
+                        <div className="overflow-auto">
+                            <table className="table table-normal  h-full w-full">
 
-                                {
-                                    isReady() ?
-                                        matches.map(match => (
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Name</th>
+                                        <th>Venue</th>
+                                        <th>Status</th>
+                                        <th>Date (IST)</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                            <tr key={match.id}>
-                                                <th></th>
-                                                <td>{match.name}</td>
-                                                <td>{match.venue}</td>
-                                                <td>{match.status}</td>
-                                                <td>{new Date(match.dateTimeGMT).toLocaleString('en-IN', options)}</td>
-                                                <td><button className={loadingAddEvent === match.id ? `btn w-24 loading  ` : `btn w-24  `} onClick={() => onAddEvent(match)}>ADD</button></td>
+                                    {
+                                        isReady() ?
+                                            matches.map(match => (
 
-                                            </tr>
-                                        )) :
-                                        <></>
+                                                <tr key={match.id}>
+                                                    <th></th>
+                                                    <td>{match.name}</td>
+                                                    <td>{match.venue}</td>
+                                                    <td>{match.status}</td>
+                                                    <td>{new Date(match.dateTimeGMT).toLocaleString('en-IN', options)}</td>
+                                                    <td><button className={loadingAddEvent === match.id ? `btn w-24 loading  ` : `btn w-24  `} onClick={() => onAddEvent(match)}>ADD</button></td>
 
-                                }
+                                                </tr>
+                                            )) :
+                                            <></>
+
+                                    }
 
 
 
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
             <Footer />
-        </div>
+        </>
     );
 };
 

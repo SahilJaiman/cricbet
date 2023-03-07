@@ -32,7 +32,7 @@ export default function Eventcard({ e,API_KEY }) {
     };
 
     const onPlaceBet = async (team) => {
-        console.log(event);
+       
         try {
             setLoading(match.id);
             await placeBetOperation(

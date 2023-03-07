@@ -10,12 +10,13 @@ import Error from '@/components/Errorpage';
 import SeriesInfo from '@/components/SeriesInfo/SeriesInfo';
 import LiveEvents from '@/components/LiveEvents';
 import { motion, useScroll } from 'framer-motion';
-
+import { useRouter } from 'next/navigation';
 
 
 export default function Matches() {
 
   const { scrollYProgress } = useScroll();
+  const router = useRouter();
 
 
   const scrollToTop = () => {

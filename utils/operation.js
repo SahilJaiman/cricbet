@@ -31,9 +31,7 @@ export const placeBetOperation = async (id,team,amt ) => {
         const contractInstance = await tezos.wallet.at(contractAddress);
         const op = await contractInstance.methods.placeBet(
                 team,
-                id,
-                
-            
+                id
         ).send({
             amount: amt,
             mutez:false,
