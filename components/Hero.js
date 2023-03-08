@@ -19,7 +19,7 @@ export default function Hero() {
                         <span>
                             <motion.div
                                 ref={constraintsRef}
-                                className="inline-block bg-cover rounded-full active:animate-none w-8 h-8 "
+                                className="inline-block animate-bounce bg-cover rounded-full active:animate-none w-8 h-8 "
                                 style={{
                                     backgroundImage: `url('/ball.png')`
                                 }}
