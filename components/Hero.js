@@ -34,7 +34,7 @@ export default function Hero() {
                 <p
                     className="text-2xl text-center text-gray-400 lg:max-w-lg lg:text-left"
                 >
-                    Cricbet combines the power of Tezos blockchain with an easy-to-use platform for cricket betting enthusiasts.
+                    CricBet combines the power of Tezos blockchain with an easy-to-use platform for cricket betting enthusiasts.
                 </p>
                 <div className="mx-auto space-x-4 lg:mx-0">
                     <a
