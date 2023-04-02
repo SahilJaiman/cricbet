@@ -38,54 +38,54 @@ export default function Matches() {
 
   return (
     <>
-    <div className="min-h-screen flex flex-col">
-      <motion.div className='fixed z-50 top-0 left-0 right-0 h-2 bg-primary ' style={{ scaleX: scrollYProgress }} />
-      <a
+      <div className="min-h-screen flex flex-col">
+        <motion.div className='fixed z-50 top-0 left-0 right-0 h-2 bg-primary ' style={{ scaleX: scrollYProgress }} />
+        <a
 
-        onClick={scrollToTop}
-        className="flex justify-center items-center fixed backdrop-blur-sm text-center right-[10%] lg:right-[3%] bottom-[3%] lg:bottom-[5%] h-12 w-12 z-40  group  animate-bounce  transition duration-300 ease-in-out ring-2 rounded-full py-3 shadow-2xl cursor-pointer"
-      >
-        <FontAwesomeIcon  width={16} height={16}  icon={faArrowUp} />
-      </a>
-      <Navbar />
-      <div className="flex justify-center mx-auto my-6 ">
+          onClick={scrollToTop}
+          className="flex justify-center items-center fixed backdrop-blur-sm text-center right-[10%] lg:right-[3%] bottom-[3%] lg:bottom-[5%] h-12 w-12 z-40  group  animate-bounce  transition duration-300 ease-in-out ring-2 rounded-full py-3 shadow-2xl cursor-pointer"
+        >
+          <FontAwesomeIcon width={16} height={16} icon={faArrowUp} />
+        </a>
+        <Navbar />
+        <div className="flex justify-center mx-auto my-6 ">
 
-        <div className="tabs">
-          <a
-            className={`tab sm:tab-md md:tab-lg tab-lifted ${activeTab === 'series-info' ? 'tab-active' : ''}`}
-            onClick={() => handleTabClick('series-info')}
-          >
-            Series Info
-          </a>
-          <a
-            className={`tab sm:tab-md md:tab-lg tab-lifted ${activeTab === 'live-events' ? 'tab-active' : ''}`}
-            onClick={() => handleTabClick('live-events')}
-          >
-            Live Events
-          </a>
-          <a
-            className={`tab sm:tab-md md:tab-lg tab-lifted ${activeTab === 'live-matches' ? 'tab-active' : ''}`}
-            onClick={() => handleTabClick('live-matches')}
-          >
-            Live Matches
-          </a>
+          <div className="tabs">
+            <a
+              className={`tab  sm:tab-lg tab-lifted ${activeTab === 'series-info' ? 'tab-active' : ''}`}
+              onClick={() => handleTabClick('series-info')}
+            >
+              Series Info
+            </a>
+            <a
+              className={`tab sm:tab-lg tab-lifted ${activeTab === 'live-events' ? 'tab-active' : ''}`}
+              onClick={() => handleTabClick('live-events')}
+            >
+              Live Events
+            </a>
+            <a
+              className={`tab sm:tab-lg tab-lifted ${activeTab === 'live-matches' ? 'tab-active' : ''}`}
+              onClick={() => handleTabClick('live-matches')}
+            >
+              Live Matches
+            </a>
+          </div>
+
         </div>
+        {(() => {
+          switch (activeTab) {
+            case 'live-matches':
+              return <LiveScores />;
+            case 'series-info':
+              return <SeriesInfo />
+            default:
+              return <LiveEvents />
+          }
+        })()}
+
 
       </div>
-      {(() => {
-        switch (activeTab) {
-          case 'live-matches':
-            return <LiveScores />;
-          case 'series-info':
-            return <SeriesInfo />
-          default:
-            return <LiveEvents />
-        }
-      })()}
-
-      
-    </div>
       <Footer />
-      </>
+    </>
   )
 }

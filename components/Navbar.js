@@ -18,7 +18,7 @@ export default function Navbar() {
             localStorage.getItem('theme') || 'winter' : 'winter'
     );
 
-    const themes = ["light", "dark", "cupcake", "retro", "forest", "aqua", "lofi", "pastel", "fantasy", "black", "luxury", "business", "night", "winter"]
+    const themes = ["light", "dark", "cupcake", "forest","lofi", "pastel", "fantasy", "black", "luxury", "business", "night", "winter"]
 
 
     const handleChange = (event) => {
@@ -122,7 +122,7 @@ export default function Navbar() {
 
                 </a>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center  ml-8 hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li>
 

@@ -5,10 +5,13 @@ import { useSearchParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Error from '@/components/Errorpage';
-import { addEventOperation, placeBetOperation, resolveBetOperation } from '@/utils/operation';
+import { addEventOperation } from '@/utils/operation';
 import { getApiKey } from '@/app/constants';
-
+import toast, { Toaster } from 'react-hot-toast';
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/series_info';
+
+
+
 
 const SeriesPage = () => {
 
@@ -22,6 +25,7 @@ const SeriesPage = () => {
     const options = { timeZone: istTimezone, weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' };
 
     const onAddEvent = async (match) => {
+        const toastId = toast.loading('Please wait, adding match to events list...');
         try {
             setLoadingAddEevnt(match.id);
             await addEventOperation(
@@ -32,9 +36,15 @@ const SeriesPage = () => {
                     teamB: match.teams[1],
                 }
             );
-            alert("Transaction Confirmend!");
+            toast.success('Match successfully added to the event!', {
+                id: toastId,
+            });
+
         } catch (err) {
-            alert("Transaction failed: " + err.message);
+
+            toast.error(`Unable to add match to event.`, {
+                id: toastId,
+            });
         }
 
         setLoadingAddEevnt(null);
@@ -75,6 +85,12 @@ const SeriesPage = () => {
 
     return (
         <>
+            <Toaster
+                toastOptions={{
+                    className: 'bg-base-100 text-base-content',
+                }}
+
+            />
             <div className="min-h-screen flex flex-col ">
                 <Navbar />
 
@@ -83,7 +99,7 @@ const SeriesPage = () => {
 
                     <div className="  ">
                         <div className="overflow-auto">
-                            <table className="table table-normal  h-full w-full">
+                            <table className="table table-zebra table-normal  h-full w-full">
 
                                 <thead>
                                     <tr>

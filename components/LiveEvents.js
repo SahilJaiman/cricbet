@@ -87,7 +87,7 @@ function LiveEvents() {
   return (
     <div className="p-6">
       {/*<h2 className="text-2xl text-center mb-8 font-bold">Live Events</h2>*/}
-      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid  gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {
           isReady() ?
             events.map(event => (
