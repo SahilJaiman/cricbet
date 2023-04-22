@@ -7,7 +7,7 @@ import { fetchStorage } from '@/utils/tzkt';
 import axios from "axios";
 import { placeBetOperation } from '@/utils/operation';
 import CountdownTimer from './CountdownTimer';
-
+import { connectWallet, disconnectWallet, getAccount } from "../../utils/wallet"
 import toast, { Toaster } from 'react-hot-toast';
 const notify = () => toast('Here is your toast.');
 
@@ -36,6 +36,12 @@ export default function Eventcard({ e, API_KEY }) {
     };
 
     const onPlaceBet = async (team) => {
+        
+        const activeAccount = await getAccount();
+        if (!activeAccount) {
+            await connectWallet();
+        }
+
         const toastId = toast.loading('Placing your bet, please wait...');
 
         try {

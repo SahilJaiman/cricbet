@@ -25,7 +25,7 @@ export default function SeriesInfo() {
                     return;
                 }
 
-                const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&offset=0`);
+                const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&offset=1`);
 
                 const data = await res.json();
 
