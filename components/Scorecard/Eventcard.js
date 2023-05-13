@@ -57,6 +57,7 @@ export default function Eventcard({ e, API_KEY }) {
                 duration: 5000,
             });
         } catch (err) {
+            console.log("Error !!")
             toast.error(`Unable to place bet.`, {
                 id: toastId,
                 duration: 5000,
