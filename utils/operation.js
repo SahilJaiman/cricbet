@@ -37,7 +37,13 @@ export const placeBetOperation = async (id,team,amt ) => {
             mutez:false,
         });
         console.log("I am before !!");
-        await op.confirmation(1);
+        try {
+            await op.confirmation(1);
+        } catch (error) {
+            console.log("Error in Confirmation");
+            return;
+        }
+        
         console.log("I am after !!");
         return;
     } catch (err) {
