@@ -36,7 +36,9 @@ export const placeBetOperation = async (id,team,amt ) => {
             amount: amt,
             mutez:false,
         });
+        console.log("I am before !!");
         await op.confirmation(1);
+        console.log("I am after !!");
         return;
     } catch (err) {
         throw err;
