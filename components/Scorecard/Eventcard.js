@@ -2,14 +2,13 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image';
 import Loading from '../Loading';
-import { getApiKey } from '@/app/constants';
 import { fetchStorage } from '@/utils/tzkt';
 import axios from "axios";
 import { placeBetOperation } from '@/utils/operation';
 import CountdownTimer from './CountdownTimer';
-import { connectWallet, disconnectWallet, getAccount } from "../../utils/wallet"
+import { connectWallet, getAccount } from "../../utils/wallet"
 import toast, { Toaster } from 'react-hot-toast';
-const notify = () => toast('Here is your toast.');
+
 
 
 const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/match_info';
@@ -46,11 +45,13 @@ export default function Eventcard({ e, API_KEY }) {
 
         try {
             setLoading(match.id);
+            console.log("Placing !!")
             await placeBetOperation(
                 event.key,
                 team,
                 event.value.fixedBetAmount / 1000000
             );
+            console.log("Bet Placed !!")
             toast.success('Bet successfully placed!', {
                 id: toastId,
                 duration: 5000,
