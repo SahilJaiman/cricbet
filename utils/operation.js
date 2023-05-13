@@ -37,6 +37,7 @@ export const placeBetOperation = async (id,team,amt ) => {
             mutez:false,
         });
         await op.confirmation(1);
+        return;
     } catch (err) {
         throw err;
     }
