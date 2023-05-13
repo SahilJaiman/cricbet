@@ -1,4 +1,4 @@
-
+"use client";
 import { contractAddress } from "./contract";
 import { tezos } from "./tezos";
 
