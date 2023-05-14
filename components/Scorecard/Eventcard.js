@@ -142,8 +142,8 @@ export default function Eventcard({ e, API_KEY }) {
                 </div>
 
 
-                <div className="relative flex flex-col h-32 gap-4 p-2 justify-center ">
-                    <div className="absolute top-2 flex justify-center w-full">
+                <div className="relative flex flex-col h-32 gap-4 p-2 justify-between ">
+                    <div className="flex justify-center w-full">
                         <CountdownTimer eventStartDate={new Date(match.dateTimeGMT)} />
                     </div>
                     <div className="flex w-full flex-row justify-between">

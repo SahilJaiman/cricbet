@@ -11,49 +11,57 @@ const MATCHES_ENDPOINT = 'https://api.cricapi.com/v1/series';
 
 
 export default function SeriesInfo() {
-    const [series, setSeries] = useState(undefined);
+    const [series, setSeries] = useState([]);
     const [error, setError] = useState(false);
     const [selectedId, setSelectedId] = useState(null)
+    const [offset, setOffset] = useState(0);
+    const [loading, setLoading] = useState(false);
+
+
+    async function fetchData() {
+        try {
+            setLoading(true);
+            const API_KEY = await getApiKey();
+            if (API_KEY == API_KEY_ERROR) {
+                setError(true);
+                return;
+            }
+
+            const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&offset=${offset}`);
+
+            const data = await res.json();
+
+            console.log("Series Data", data.data);
+
+            setSeries(series => [...series, ...data.data]);
+            setLoading(false);
+
+
+        } catch (error) {
+            setError(true);
+            setLoading(false);
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
+        
+        fetchData();
+    }, [offset]);
 
-        async function fetchData() {
-            try {
-                const API_KEY = await getApiKey();
-                if (API_KEY == API_KEY_ERROR) {
-                    setError(true);
-                    return;
-                }
-
-                const res = await fetch(`${MATCHES_ENDPOINT}?apikey=${API_KEY}&offset=1`);
-
-                const data = await res.json();
-
-                console.log(data);
-                setSeries(data.data);
-
-
-            } catch (error) {
-                setError(true);
-                console.log(error);
-            }
-        }
-
-        if (!isReady())
-            fetchData();
-    }, []);
+;
 
     const isReady = () => {
 
         return (
-            typeof series !== 'undefined'
+            series.length != 0
         );
     }
 
     if (error == true) {
         return (
             < div className=" flex-col flex flex-1 h-full" >
-                 <ApiErrorPage />(
+                <ApiErrorPage />(
 
             </div >
         )
@@ -93,7 +101,7 @@ export default function SeriesInfo() {
                 </AnimatePresence>*/
             }
 
-            <div className="p-6">
+            <div className="flex flex-col gap-4 p-6">
                 {/*<h2 className="text-2xl text-center mb-8 font-bold">Series List</h2>*/}
                 <div className="grid gap-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {
@@ -107,11 +115,13 @@ export default function SeriesInfo() {
 
                     }
 
-
-
                 </div>
-
-
+                {
+                    loading ? <Loading /> : <></>
+                }
+                <div className='flex w-full justify-center'>
+                    <button onClick={() => setOffset(offset => offset + 25)} className={`btn btn-outline`}>Load More</button>
+                </div>
             </div>
 
         </div>
