@@ -5,6 +5,7 @@ import Image from 'next/image';
 export default function Scorecard({ match }) {
 
     const live = match.matchStarted === true && match.matchEnded === false;
+    if (!match.teamInfo) return ;
     return (
         <div key={match.id} className="flex flex-col  h-full w-full border-2  mx-auto my-2 cursor-pointer max-w-sm sm:max-w-md overflow-auto transition duration-200 rounded-lg text-xs shadow-lg hover:scale-105 ">
 

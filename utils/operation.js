@@ -10,7 +10,7 @@ export const  addEventOperation = async (match) => {
             0,
             match.id,
             Math.floor(new Date(match.startTime).getTime()/1000),
-            1000000,
+            match.amount*1000000,
             false,
             "undeclared",
             match.teamA,

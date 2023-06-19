@@ -1,8 +1,7 @@
 'use client';
 
 import { Inter } from '@next/font/google'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer';
+
 import Hero from '@/components/Hero';
 import SectionTitle from '@/components/SectionTitle';
 import Benefits from '@/components/Features/Features';
@@ -23,7 +22,7 @@ export default function Home() {
 
 
       <div className="min-h-screen ">
-        <Navbar />
+      
         <motion.div className='fixed top-0 left-0 right-0 h-2 bg-primary ' style={{ scaleX: scrollYProgress }} />
         <section id='hero'>
           <ScrollReveal>
@@ -49,7 +48,7 @@ export default function Home() {
 
 
 
-        <Footer />
+        
 
 
       </div>

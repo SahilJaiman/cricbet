@@ -135,7 +135,7 @@ export default function Eventcard({ e, API_KEY }) {
 
                 <div className="flex flex-row items-center  p-2">
 
-                    <div className="px-1 flex-1 py-1 font-serif  font-medium text-center">
+                    <div className="px-1 flex-1 py-1 font-serif text-md font-medium text-center">
                         <p className="">{match.name}</p>
                     </div>
 

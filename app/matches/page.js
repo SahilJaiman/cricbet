@@ -1,8 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react'
-import Navbar from '@/components/Navbar';
 import LiveScores from '@/components/LiveScores';
-import Footer from '@/components/Footer';
+
 
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -47,24 +46,24 @@ export default function Matches() {
         >
           <FontAwesomeIcon width={16} height={16} icon={faArrowUp} />
         </a>
-        <Navbar />
+     
         <div className="flex justify-center mx-auto my-6 ">
 
           <div className="tabs">
             <a
-              className={`tab  sm:tab-lg tab-lifted ${activeTab === 'series-info' ? 'tab-active' : ''}`}
+              className={`tab  sm:tab-lg tab-bordered ${activeTab === 'series-info' ? 'tab-active' : ''}`}
               onClick={() => handleTabClick('series-info')}
             >
               Series Info
             </a>
             <a
-              className={`tab sm:tab-lg tab-lifted ${activeTab === 'live-events' ? 'tab-active' : ''}`}
+              className={`tab sm:tab-lg tab-bordered ${activeTab === 'live-events' ? 'tab-active' : ''}`}
               onClick={() => handleTabClick('live-events')}
             >
               Live Events
             </a>
             <a
-              className={`tab sm:tab-lg tab-lifted ${activeTab === 'live-matches' ? 'tab-active' : ''}`}
+              className={`tab sm:tab-lg tab-bordered ${activeTab === 'live-matches' ? 'tab-active' : ''}`}
               onClick={() => handleTabClick('live-matches')}
             >
               Live Matches
@@ -85,7 +84,7 @@ export default function Matches() {
 
 
       </div>
-      <Footer />
+   
     </>
   )
 }
