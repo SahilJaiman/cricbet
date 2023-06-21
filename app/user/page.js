@@ -10,7 +10,7 @@ import Loading from '@/components/Loading';
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 
-//import './CustomScrollbar.css';
+import './CustomScrollbar.css';
 
 
 
