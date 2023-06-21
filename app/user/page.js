@@ -11,7 +11,7 @@ import Chart from "react-apexcharts";
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 
-//import './CustomScrollbar.css';
+import './CustomScrollbar.css';
 
 
 
@@ -185,7 +185,7 @@ const Dashboard = () => {
                                 </div>
 
                                 <div className='p-4'>
-                                    <Chart options={options} series={series} type='bar' height={250} />
+                                    {/* <Chart options={options} series={series} type='bar' height={250} /> */}
                                 </div>
                             </div>
                         </div>
