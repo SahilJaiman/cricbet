@@ -6,34 +6,33 @@ import AccessDenied from '@/components/AccessDenied';
 import { fetchStorage } from '@/utils/tzkt';
 import Loading from '@/components/Loading';
 
-import Chart from "react-apexcharts";
 
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 
-import './CustomScrollbar.css';
+//import './CustomScrollbar.css';
 
 
 
 const Dashboard = () => {
-    const series = [ //data on the y-axis
+    // const series = [ //data on the y-axis
 
-        {
-            name: 'User Stats',
-            data: [9, 1, 20],
-        },
+    //     {
+    //         name: 'User Stats',
+    //         data: [9, 1, 20],
+    //     },
 
-    ];
-    const options = { //data on the x-axis
+    // ];
+    // const options = { //data on the x-axis
 
-        chart: {
-            type: 'bar',
-        },
-        xaxis: {
-            categories: ['Matches', 'Bets Won', 'Total Winning'],
-        },
+    //     chart: {
+    //         type: 'bar',
+    //     },
+    //     xaxis: {
+    //         categories: ['Matches', 'Bets Won', 'Total Winning'],
+    //     },
 
-    };
+    // };
 
 
     
