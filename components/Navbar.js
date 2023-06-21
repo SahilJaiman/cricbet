@@ -95,7 +95,7 @@ export default function Navbar() {
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabIndex={0} className="menu menu-compact md:menu-normal dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="menu menu-sm md:menu-md dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li>
 
                             <a className={activeIndex === 0 ? "active text-primary-content" : ""} onClick={() => { setActiveIndex(0); router.push('/'); }}>
@@ -187,7 +187,7 @@ export default function Navbar() {
                             <img className="" src={avatar} />
                         </div>
                     </label>
-                    <ul tabIndex={0} className="menu menu-compact md:menu gap-4 dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="menu menu-sm md:menu-md gap-4 dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li className="tooltip tooltip-left" data-tip={account != "" ? account : "Click here to connect!!"}>
 
                             <a className="group justify-between" onClick={onConnectWallet}>
