@@ -11,7 +11,7 @@ export default function SeriesInfoCard({ series }) {
 
     const onHandleClick = (seriesId) => {
 
-        router.push(`/series/${seriesId}`);
+        router.push(`/series?seriesId=${seriesId}`);
     };
 
 

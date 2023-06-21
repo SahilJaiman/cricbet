@@ -28,7 +28,7 @@ export default function Navbar() {
     };
 
     const onProfileClick = (id) => {
-        router.push(`/user/${id}`);
+        router.push(`/user?userId=${id}`);
     }
 
     useEffect(() => {
