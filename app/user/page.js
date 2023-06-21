@@ -11,7 +11,7 @@ import Chart from "react-apexcharts";
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 
-import './CustomScrollbar.css';
+//import './CustomScrollbar.css';
 
 
 
