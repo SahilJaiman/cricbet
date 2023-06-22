@@ -3,20 +3,20 @@ import { contractAddress } from "./contract";
 import { tezos } from "./tezos";
 
 
-export const  addEventOperation = async (match) => {
+export const addEventOperation = async (match) => {
     try {
         const contractInstance = await tezos.wallet.at(contractAddress);
         const op = await contractInstance.methods.addEvent(
             0,
             match.id,
-            Math.floor(new Date(match.startTime).getTime()/1000),
-            match.amount*1000000,
+            Math.floor(new Date(match.startTime).getTime() / 1000),
+            match.amount * 1000000,
             false,
             "undeclared",
             match.teamA,
             match.teamB,
             0,
-         
+
         ).send();
         await op.confirmation(1);
     } catch (err) {
@@ -26,15 +26,15 @@ export const  addEventOperation = async (match) => {
 
 
 
-export const placeBetOperation = async (id,team,amt ) => {
+export const placeBetOperation = async (id, team, amt) => {
     try {
         const contractInstance = await tezos.wallet.at(contractAddress);
         const op = await contractInstance.methods.placeBet(
-                team,
-                id
+            team,
+            id
         ).send({
             amount: amt,
-            mutez:false,
+            mutez: false,
         });
         // console.log("I am before !!");
         // try {
@@ -44,7 +44,7 @@ export const placeBetOperation = async (id,team,amt ) => {
         //     console.log("Error in Confirmation");
         //     return;
         // }
-        
+
         // console.log("I am after !!");
         return;
     } catch (err) {
@@ -52,15 +52,15 @@ export const placeBetOperation = async (id,team,amt ) => {
     }
 };
 
-export const resolveBetOperation = async () => {
+export const resolveBetOperation = async (id, losingTeam, winnerTeam) => {
     try {
         const contractInstance = await tezos.wallet.at(contractAddress);
         const op = await contractInstance.methods.resolveBet(
-            
-                "Match01",
-                "India",
-                "Pakistan",
-            
+
+            id,
+            losingTeam,
+            winnerTeam
+
         ).send();
         await op.confirmation(1);
     } catch (err) {

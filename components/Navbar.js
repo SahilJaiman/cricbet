@@ -18,7 +18,7 @@ export default function Navbar() {
             localStorage.getItem('theme') || 'winter' : 'winter'
     );
 
-    const themes = ["light", "dark", "cupcake", "forest","lofi", "pastel", "fantasy", "black", "luxury", "business", "night", "winter"]
+    const themes = ["light", "dark", "cupcake", "forest", "lofi", "pastel", "fantasy", "black", "luxury", "business", "night", "winter"]
 
 
     const handleChange = (event) => {
@@ -28,7 +28,11 @@ export default function Navbar() {
     };
 
     const onProfileClick = (id) => {
-        router.push(`/user?userId=${id}`);
+        if (account == admin) {
+            router.push(`/adminDashboard`);
+        } else {
+            router.push(`/user?userId=${id}`);
+        }
     }
 
     useEffect(() => {
@@ -72,8 +76,12 @@ export default function Navbar() {
 
         const isUserPage = pathname.includes('user')
 
-        if (isUserPage) {
-            router.push(`/user?userId=${activeAccount}`);
+        if (isUserPage || pathname.includes('adminDashboard')) {
+            if (activeAccount == admin) {
+                router.push(`/adminDashboard`);
+            } else {
+                router.push(`/user?userId=${activeAccount}`);
+            }
         }
 
     };
@@ -110,7 +118,7 @@ export default function Navbar() {
                             </a>
                         </li>
                         <li>
-                            <a href='https://github.com/SahilJaiman/cricbet#how-to-use' className={activeIndex === 2 ? "active text-primary-content" : ""} onClick={() => { setActiveIndex(2);}}>
+                            <a href='https://github.com/SahilJaiman/cricbet#how-to-use' className={activeIndex === 2 ? "active text-primary-content" : ""} onClick={() => { setActiveIndex(2); }}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                                 How to use
                             </a>

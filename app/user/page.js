@@ -120,21 +120,22 @@ const Dashboard = () => {
             <div className="min-h-screen flex flex-col ">
 
                 <div className="flex flex-col flex-1 p-2 md:p-4 lg:p-6 gap-1 text-center">
-                    <h2 className="text-2xl truncate text-center font-bold">Dashboard</h2>
+                    <h2 className="text-2xl truncate text-center uppercase font-bold">Dashboard</h2>
                     <div className="flex p-2 justify-center " >
-                        <div className="border-2 hover:scale-110 transition-all shadow-lg shadow-primary rounded-xl px-2 py-1">
+                        <div className="border-2  transition-all shadow-lg shadow-primary rounded-xl px-2 py-1">
                             {userId}
                         </div>
                     </div>
                     <div className="flex-1 flex flex-col-reverse lg:flex-row gap-4 justify-center rounded-lg z-10 backdrop-blur-2xl p-2 border-2 ">
                         <div className='flex flex-1 flex-col '>
                             <div className="flex flex-col items-center text-xl font-bold mb-4 ">
-                                <button className="btn btn-block ">My Bets</button>
+                                <button className="btn btn-block ">My Bets <div className="badge badge-primary items-center ">{ bets.length}</div></button>
                             </div>
 
                             <div className='custom-scrollbar grid p-4 gap-2 grid-cols-1 max-h-96 overflow-y-auto '>
                                 {
                                     bets.map(bet => (
+                                        
                                         <div key={bet.eventId} className="flex justify-center transition-all rounded-md ">
                                             <div className="card flex-1 max-w-lg p-2 bg-base-100 ring-2 ring-warning">
                                                 <div className="card-body gap-2 p-2 ">

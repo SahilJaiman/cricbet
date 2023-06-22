@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 import Error from '@/components/Errorpage';
-import { addEventOperation } from '@/utils/operation';
+
 import { getApiKey } from '@/app/constants';
 import toast, { Toaster } from 'react-hot-toast';
 import AddMatchModal from '@/components/SeriesInfo/Modal';
@@ -29,31 +29,7 @@ const SeriesDetail = () => {
     const istTimezone = 'Asia/Kolkata';
     const options = { timeZone: istTimezone, weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' };
 
-    const onAddEvent = async (match) => {
-        const toastId = toast.loading('Please wait, adding match to events list...');
-        try {
-            setLoadingAddEevnt(match.id);
-            await addEventOperation(
-                {
-                    id: match.id,
-                    startTime: match.dateTimeGMT,
-                    teamA: match.teams[0],
-                    teamB: match.teams[1],
-                }
-            );
-            toast.success('Match successfully added to the event!', {
-                id: toastId,
-            });
 
-        } catch (err) {
-
-            toast.error(`Unable to add match to event.`, {
-                id: toastId,
-            });
-        }
-
-        setLoadingAddEevnt(null);
-    };
 
     useEffect(() => {
         const fetchSeriesData = async () => {
