@@ -59,7 +59,7 @@ export const resolveBetOperation = async (id, losingTeam, winnerTeam) => {
 
             id,
             losingTeam,
-            winnerTeam
+            winningTeam
 
         ).send();
         await op.confirmation(1);

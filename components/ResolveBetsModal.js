@@ -32,7 +32,7 @@ export default function ResolveBetsModal({ event }) {
             loser = unCheckedButton.parentElement.querySelector('span').textContent;
         }
 
-        
+
 
         try {
             setLoading(true);
@@ -41,7 +41,7 @@ export default function ResolveBetsModal({ event }) {
                 {
                     id: event.id,
                     losingTeam: loser,
-                    winnerTeam: winner,
+                    winningTeam: winner,
 
                 }
             );
