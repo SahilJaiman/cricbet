@@ -52,7 +52,7 @@ export const placeBetOperation = async (id, team, amt) => {
     }
 };
 
-export const resolveBetOperation = async (id, losingTeam, winnerTeam) => {
+export const resolveBetOperation = async (id, losingTeam, winningTeam) => {
     try {
         const contractInstance = await tezos.wallet.at(contractAddress);
         const op = await contractInstance.methods.resolveBet(
