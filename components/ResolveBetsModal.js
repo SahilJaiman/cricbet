@@ -33,7 +33,6 @@ export default function ResolveBetsModal({ event }) {
         }
 
 
-
         try {
             setLoading(true);
         
