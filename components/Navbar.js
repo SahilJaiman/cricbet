@@ -134,20 +134,20 @@ export default function Navbar() {
                 <ul className="menu menu-horizontal px-1">
                     <li>
 
-                        <a className={activeIndex === 0 ? "active w-12 text-primary-content" : "w-24 flex gap-1"} onClick={() => { setActiveIndex(0); router.push('/'); }}>
+                        <a className={activeIndex === 0 ? "active cursor-pointer w-24 flex gap-1 text-primary-content" : "w-24 flex gap-1 cursor-pointer"} onClick={() => { setActiveIndex(0); router.push('/'); }}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                             Home
 
                         </a>
                     </li>
                     <li>
-                        <a className={activeIndex === 1 ? "active text-primary-content" : "w-24 flex gap-1"} onClick={() => { setActiveIndex(1); router.push('/matches'); }}>
+                        <a className={activeIndex === 1 ? "active cursor-pointer w-24 flex gap-1 text-primary-content" : "w-24 flex gap-1 cursor-pointer"} onClick={() => { setActiveIndex(1); router.push('/matches'); }}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             Matches
                         </a>
                     </li>
                     <li>
-                        <a href='https://github.com/SahilJaiman/cricbet#how-to-use' className={activeIndex === 2 ? "active text-primary-content" : "w-36 flex gap-1"} onClick={() => { setActiveIndex(2); }}>
+                        <a href='https://github.com/SahilJaiman/cricbet#how-to-use' className={activeIndex === 2 ? "active w-36 flex gap-1 text-primary-content" : "w-36 flex gap-1 cursor-pointer"} onClick={() => { setActiveIndex(2); }}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                             How to use
                         </a>
