@@ -198,7 +198,7 @@ export default function Navbar() {
                     <ul tabIndex={0} className="menu menu-sm md:menu-md gap-4 dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li className="tooltip tooltip-left" data-tip={account != "" ? account : "Click here to connect!!"}>
 
-                            <div className="group justify-between" onClick={onConnectWallet}>
+                            <div className="flex gap-1 justify-between" onClick={onConnectWallet}>
                                 {account ? "Connected" : "Connect Wallet"}
                                 <img className="w-5 h-5 group-hover:scale-125 transition duration-200 mr-1" src="/icon-128.png"></img>
                             </div>
